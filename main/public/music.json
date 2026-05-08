@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Stupid Love",
+    "artist": "Salbakuta",
+    "image": "/images/stupidlove.jpg",
+    "description": "Simula ng maling desisyon sa buhay. 🤡"
+  },
+  {
+    "id": 2,
+    "title": "Kill This Love",
+    "artist": "BLACKPINK",
+    "image": "/images/killthislove.jpg",
+    "description": "Tapusin na ang paghihirap. 🚩"
+  },
+  {
+    "id": 3,
+    "title": "Thank U, Next",
+    "artist": "Ariana Grande",
+    "image": "/images/thankunext.jpg",
+    "description": "Moving on... 😌✨"
+  },
+  {
+    "id": 4,
+    "title": "I'm Not The Only One",
+    "artist": "Sam Smith",
+    "image": "/images/imnottheonlyone.jpg",
+    "description": "Plot twist: May iba pa pala...  😭"
+  },
+  {
+    "id": 5,
+    "title": "Rude",
+    "artist": "MAGIC!",
+    "image": "/images/rude.jpg",
+    "description": "Siya pa ang galit? 💀"
+  },
+  {
+    "id": 6,
+    "title": "Bye Bye Bye",
+    "artist": "NSYNC",
+    "image": "/images/byebyebye.jpg",
+    "description": "The 'grand exit' move. 💅"
+  }
+]
