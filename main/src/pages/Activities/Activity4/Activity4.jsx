@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Activity4.css";
 import ApiMusicList from "../../../components/api-music/ApiMusicList";
 
@@ -6,6 +7,8 @@ function Activity4() {
   const [songs, setSongs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -22,7 +25,6 @@ function Activity4() {
           setSongs(data.data.slice(0, 9));
           setLoading(false);
         }, 1000);
-
       } catch (error) {
         console.error(error);
         setError("Failed to fetch music.");
@@ -35,19 +37,36 @@ function Activity4() {
 
   return (
     <div className="activity4-container">
-      <h1>🎵 Online Music Playlist</h1>
+      {/* Header */}
+      <header className="activity4-header">
+        <h1>🎵 Online Music Playlist</h1>
+        <p>Stream trending songs with a modern music experience</p>
+      </header>
 
+      {/* Loader */}
       {loading && (
         <div className="loader-container">
           <div className="loader"></div>
+        </div>
+      )}
+
+      {/* Error */}
+      {error && <h2 className="error-text">{error}</h2>}
+
+      {/* Music List */}
+      {!loading && !error && <ApiMusicList songs={songs} />}
+
+      {/* Navigation */}
+      <div className="nav-container">
+        <Link to="/">
+          <button className="nav-btn">Back to Landing Page</button>
+        </Link>
       </div>
-      )}
 
-      {error && <h2>{error}</h2>}
-
-      {!loading && !error && (
-        <ApiMusicList songs={songs} />
-      )}
+      {/* Back Button */}
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        ← Back
+      </button>
     </div>
   );
 }

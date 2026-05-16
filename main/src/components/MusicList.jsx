@@ -19,11 +19,11 @@ function MusicList() {
   }, []);
 
   if (loading) {
-    return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
+    return <h2 className="loading">Loading music...</h2>;
   }
 
   return (
-    <div style={styles.container}>
+    <div className="music-grid">
       {songs.map((song) => (
         <MusicCard
           key={song.id}
@@ -36,15 +36,5 @@ function MusicList() {
     </div>
   );
 }
-
-const styles = { 
-  container: { 
-    display: "grid", 
-    gridTemplateColumns: "repeat(3, 1fr)", 
-    gap: "20px", 
-    padding: "20px", 
-    justifyItems: "center" 
-  } 
-};
 
 export default MusicList;

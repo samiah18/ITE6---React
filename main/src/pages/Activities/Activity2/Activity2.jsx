@@ -1,66 +1,80 @@
 import { useState, useEffect, useRef } from "react";
 import "./Activity2.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Activity2 = () => {
-  // useState
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // useRef
   const inputRef = useRef(null);
 
-  // useEffect (runs when page loads)
+  const navigate = useNavigate();
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
-  // handle submit
   const handleSubmit = () => {
-    setSubmitted(true);
+    if (name.trim() !== "") {
+      setSubmitted(true);
+    }
   };
 
-  // reset
   const handleReset = () => {
     setName("");
     setSubmitted(false);
     inputRef.current.focus();
   };
 
- 
   return (
     <div className="container">
-      <h1>Name Greeting App</h1>
+      {/* Header */}
+      <header className="header">
+        <h1>Name Greeting App</h1>
+        <p>Try entering your name below</p>
+      </header>
 
-      
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder="Enter your name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-            
-      <div className="buttons">
-        <button onClick={handleSubmit}>Submit</button>
-        <button onClick={handleReset}>Reset</button>
+      {/* Card */}
+      <div className="card">
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Enter your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <div className="buttons">
+          <button className="primary" onClick={handleSubmit}>
+            Submit
+          </button>
+          <button className="secondary" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+
+        {/* Greeting */}
+        {submitted ? (
+          <p className="greeting">Hello, {name} 👋</p>
+        ) : (
+          <p className="info">Please enter your name first.</p>
+        )}
+
+        {name && <p className="typed">You typed: {name}</p>}
       </div>
 
-       <Link to="/activity3">
-        <button>Go to Activity 3</button>
-       </Link>
+      {/* Navigation */}
+      <div className="nav-container">
+        <Link to="/activity3">
+          <button className="nav-btn">Go to Activity 3</button>
+        </Link>
+      </div>
 
-      {/* Conditional Rendering (ternary) */}
-      {submitted ? (
-        <p className="greeting">Hello, {name} 👋</p>
-      ) : (
-        <p>Please enter your name first.</p>
-      )}
-
-      {/* Logical operator */}
-      {name && <p>You typed: {name}</p>}
-    </div>  
-  ); 
+      <button className="back-btn" onClick={() => navigate(-1)}>
+        ← Back
+      </button>
+    </div>
+  );
 };
 
 export default Activity2;

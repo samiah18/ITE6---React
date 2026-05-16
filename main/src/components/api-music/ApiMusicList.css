@@ -1,0 +1,19 @@
+/* ApiMusicList.css */
+
+.music-grid {
+  display: grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(3, auto);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+  max-width: 1100px;
+  margin: 0 auto
+}
+
+@media (max-width: 768px) {
+  .music-grid {
+    gap: 20px;
+    padding: 10px;
+  }
+}

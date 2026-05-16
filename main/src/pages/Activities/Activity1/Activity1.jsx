@@ -3,38 +3,43 @@ import "./Activity1.css";
 import { Link } from "react-router-dom";
 
 const Activity1 = () => {
+  const members = [
+    { name: "Rosamia Caspe", birthday: "October 18, 2006", initials: "RC" },
+    { name: "Victor Mel Villanueva", birthday: "August 10, 2001", initials: "VV" },
+    { name: "Mia Rose Gabrielle Ocenar", birthday: "October 4, 2005", initials: "MO" },
+    { name: "Kristine Nicole Lañada", birthday: "September 4, 2006", initials: "KL" }
+  ];
+
   return (
     <div className="container">
       {/* Header */}
-      <header className="header"></header>
-
-      <Link to="/activity2">
-        <button>Go to Activity 2</button>
-      </Link>
+      <header className="header">
+        <h1>Activity 1</h1>
+        <p>Simple Landing Page</p>
+      </header>
 
       {/* Members */}
       <section className="members">
         <h2>Meet the Team</h2>
+
         <div className="card-container">
-          <div className="card">
-            <h3>Rosamia Caspe</h3>
-            <p>Birthday: October 18, 2006</p>
-          </div>
+          {members.map((member, index) => (
+            <div className="card" key={index}>
+              <div className="avatar">{member.initials}</div>
+              <h3>{member.name}</h3>
+              <p>Birthday: {member.birthday}</p>
+            </div>
+          ))}
+        </div>
 
-          <div className="card">
-            <h3>Victor Mel Villanueva</h3>
-            <p>Birthday: August 10, 2001</p>
-          </div>
-
-          <div className="card">
-            <h3>Mia Rose Gabrielle Ocenar</h3>
-            <p>Birthday: October 4, 2005</p>
-          </div>
-
-          <div className="card">
-            <h3>Kristine Nicole Lañada</h3>
-            <p>Birthday: September 4, 2006</p>
-          </div>
+        {/* Navigation — now OUTSIDE card-container */}
+        <div className="nav-container">
+          <Link to="/activity2">
+            <button className="nav-btn">Go to Activity 2</button>
+          </Link>
+          <button className="back-btn" onClick={() => window.history.back()}>
+            ← Back
+          </button>
         </div>
       </section>
 

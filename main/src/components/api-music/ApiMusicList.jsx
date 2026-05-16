@@ -1,8 +1,10 @@
+// ApiMusicList.jsx
+import "./ApiMusicList.css";
 import ApiMusicCard from "./ApiMusicCard";
 
 function ApiMusicList({ songs }) {
   return (
-    <div style={styles.container}>
+    <div className="music-grid">
       {songs.map((song) => (
         <ApiMusicCard
           key={song.id}
@@ -15,15 +17,5 @@ function ApiMusicList({ songs }) {
     </div>
   );
 }
-
-const styles = {
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gap: "20px",
-    padding: "20px",
-    justifyItems: "center"
-  }
-};
 
 export default ApiMusicList;
